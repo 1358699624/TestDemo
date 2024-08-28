@@ -1,0 +1,221 @@
+﻿{
+  "Scenario": "Forecasting",
+  "DataSource": {
+    "Type": "SQL",
+    "Version": 1,
+    "ColumnProperties": [
+      {
+        "ColumnName": "QiShu",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "AAA001",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "AAA002",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "AAA003",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "AAA004",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "AAA005",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "AAA006",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "AAE001",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Year",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": true,
+        "Type": "Column",
+        "Version": 5
+      }
+    ],
+    "ConnectionString": "Data Source=.;Initial Catalog=caipiaosouce;Integrated Security=True;Encrypt=False",
+    "CommandString": "SELECT CAST([QiShu] as REAL), CAST([AAA001] as REAL), CAST([AAA002] as REAL), CAST([AAA003] as REAL), CAST([AAA004] as REAL), CAST([AAA005] as REAL), CAST([AAA006] as REAL), CAST([AAE001] as REAL), CAST([Year] as REAL) FROM [dbo].[T_CaiPiao]",
+    "DatabaseName": "caipiaosouce",
+    "SelectedTableDbo": "dbo",
+    "TableName": "T_CaiPiao"
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 2.9360030639412171,
+        "RuntimeInSeconds": 0.103,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 59,
+            "SeriesLength": 316,
+            "TrainSize": 1519,
+            "Horizon": 10,
+            "OutputColumnName": "AAA001",
+            "InputColumnName": "AAA001",
+            "ConfidenceLowerBoundColumn": "AAA001_LB",
+            "ConfidenceUpperBoundColumn": "AAA001_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 2.9360030639412171,
+        "RuntimeInSeconds": 0.103,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 59,
+            "SeriesLength": 89,
+            "TrainSize": 1519,
+            "Horizon": 10,
+            "OutputColumnName": "AAA001",
+            "InputColumnName": "AAA001",
+            "ConfidenceLowerBoundColumn": "AAA001_LB",
+            "ConfidenceUpperBoundColumn": "AAA001_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 2.9420582467805776,
+        "RuntimeInSeconds": 0.126,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 71,
+            "SeriesLength": 239,
+            "TrainSize": 1519,
+            "Horizon": 10,
+            "OutputColumnName": "AAA001",
+            "InputColumnName": "AAA001",
+            "ConfidenceLowerBoundColumn": "AAA001_LB",
+            "ConfidenceUpperBoundColumn": "AAA001_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 2.9420582467805776,
+        "RuntimeInSeconds": 0.123,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 71,
+            "SeriesLength": 234,
+            "TrainSize": 1519,
+            "Horizon": 10,
+            "OutputColumnName": "AAA001",
+            "InputColumnName": "AAA001",
+            "ConfidenceLowerBoundColumn": "AAA001_LB",
+            "ConfidenceUpperBoundColumn": "AAA001_UB"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "ForecastBySsa",
+        "Score": 2.9420582467805776,
+        "RuntimeInSeconds": 0.123,
+        "Parameter": {
+          "_SCHEMA_": "e0",
+          "e0": {
+            "WindowSize": 71,
+            "SeriesLength": 242,
+            "TrainSize": 1519,
+            "Horizon": 10,
+            "OutputColumnName": "AAA001",
+            "InputColumnName": "AAA001",
+            "ConfidenceLowerBoundColumn": "AAA001_LB",
+            "ConfidenceUpperBoundColumn": "AAA001_UB"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "ForecastBySsa"
+    },
+    "Schema": "e0",
+    "MetricName": "RMSE",
+    "ModelFilePath": "E:\\src\\TestDemo\\TestDemo\\MLModel1.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 5,
+  "TrainingOption": {
+    "Version": 3,
+    "OptimizeMetric": "RMSE",
+    "Subsampling": false,
+    "Type": "ForecastingTrainingOption",
+    "TrainingTime": 60,
+    "UseCrossValidation": false,
+    "Horizon": 10,
+    "TimeColumn": "AAA002",
+    "LabelColumn": "AAA001",
+    "UseDefaultIndex": false,
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "CrossValidationValidationOption",
+      "NumberOfFolds": 5
+    }
+  }
+}
