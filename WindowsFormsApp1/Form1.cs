@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -11,6 +12,8 @@ using Aspose.Cells;
 using Google.Cloud.Translation.V2;
 using GoogleApi.Entities.Maps.Routes.Common.Enums;
 using GoogleApi.Entities.Translate.Translate.Response;
+
+
 
 namespace WindowsFormsApp1
 {
@@ -33,8 +36,8 @@ namespace WindowsFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string templatePath = @"E:\src\TestDemo\WindowsFormsApp1\ExceLWork\设备设施数量及定期维护情况登记表.xlsx";
-            string outputPath = $@"E:\src\TestDemo\WindowsFormsApp1\ExceLWork\设备设施数量及定期维护情况登记表-{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx";
+            string templatePath = @"E:\00src\testdemo\WindowsFormsApp1\ExceLWork\设备设施数量及定期维护情况登记表.xlsx";
+            string outputPath = $@"E:\00src\testdemo\WindowsFormsApp1\ExceLWork\设备设施数量及定期维护情况登记表-{DateTime.Now.ToString("yyyyMMddHHmmss")}.xlsx";
             Workbook workbook = new Workbook(templatePath);
             Worksheet worksheet = workbook.Worksheets[0];
             Cells cells = worksheet.Cells;
@@ -50,50 +53,35 @@ namespace WindowsFormsApp1
 
                     // 从 DataTable 获取当前单元格的值，并将其放入 Excel 单元格中  
                     cells[cellRef].PutValue(dtable.Rows[i][j].ToString());
+
+
+                    // 假设我们想要加粗并居中第一行的文本  
+                    Style style = worksheet.Cells[i, j].GetStyle();
+                    style.Font.IsBold = true;
+                    style.HorizontalAlignment = TextAlignmentType.Center;
+                    style.Borders[BorderType.TopBorder].LineStyle = CellBorderType.Thin;
+                    style.Borders[BorderType.TopBorder].Color = Color.Black;
+                    style.Borders[BorderType.BottomBorder].LineStyle = CellBorderType.Thin;
+                    style.Borders[BorderType.BottomBorder].Color = Color.Black;
+                    style.Borders[BorderType.LeftBorder].LineStyle = CellBorderType.Thin;
+                    style.Borders[BorderType.LeftBorder].Color = Color.Black;
+                    style.Borders[BorderType.RightBorder].LineStyle = CellBorderType.Thin;
+                    style.Borders[BorderType.RightBorder].Color = Color.Black;
+                    // 应用样式  
+                    worksheet.Cells[cellRef].SetStyle(style);
                 }
             }
+
+
             workbook.Save(outputPath);
 
             //打印EXCEL 
+            SpireHelper spireHelper = new SpireHelper();
 
-            DAYIN(outputPath);
+            spireHelper.DAYIN(outputPath);
         }
 
-        private void DAYIN(string PATH)
-        {
-            Spire.Xls.Workbook workbook = new Spire.Xls.Workbook();
-
-            //获取第一个Excel工作表
-            Spire.Xls.Worksheet sheet = workbook.Worksheets[0];
-            workbook.LoadFromFile(PATH);
-            //设置打印纸张大小
-            sheet.PageSetup.PaperSize = Spire.Xls.PaperSizeType.PaperA4;
-
-            //设置打印方向(这是设置纸张的方向为横向)
-            sheet.PageSetup.Orientation = Spire.Xls.PageOrientationType.Landscape;
-
-            //设置打印对话框属性
-            PrintDialog dialog = new PrintDialog();
-            dialog.AllowPrintToFile = true;
-            dialog.AllowCurrentPage = true;
-            dialog.AllowSomePages = true;
-            //设置单面打印
-            dialog.PrinterSettings.Duplex = Duplex.Simplex;
-
-            //设置打印份数
-            dialog.PrinterSettings.Copies = 1;
-
-            //打印文档
-            workbook.PrintDialog = dialog;
-            PrintDocument pd = workbook.PrintDocument;
-
-            //这是设置打印文档的方向为横向(若为纵向打印则两步都需要改)
-            pd.DefaultPageSettings.Landscape = true;
-            PrintController printController = new StandardPrintController();
-            pd.PrintController = printController;
-            pd.Print();
-
-        }
+      
         DataTable dtable = new DataTable("Rock");
 
         private void button1_Click(object sender, EventArgs e)

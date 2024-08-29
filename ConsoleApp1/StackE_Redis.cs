@@ -23,7 +23,9 @@ namespace ConsoleApp1
                 // 获取数据库
                 IDatabase db = redis.GetDatabase(2);//设置索引2为数据库,显示db2
 
-       
+                // 设置键值对
+                db.StringSet("myKey", "myValue");
+
                 //设置myKey只有300秒有效时间
                 TimeSpan timeSpan = TimeSpan.FromSeconds(300);
                 // 设置键值对
@@ -39,6 +41,8 @@ namespace ConsoleApp1
                 }
                 Console.WriteLine($"测试Redis{arr.Length}");
                 db.ListLeftPush("Listtest", arr);
+
+                RedisValue myKey = db.StringGet("myKey");
                  
                 RedisValue[] list = db.ListRange("Listtest", 0, 5);
                 foreach (var item in list)
