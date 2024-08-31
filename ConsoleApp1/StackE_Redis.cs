@@ -13,7 +13,9 @@ namespace ConsoleApp1
         // 配置连接字符串
        static string redisConnectionString = "localhost:6379";
 
-
+        /// <summary>
+        /// Redis类库
+        /// </summary>
         public  static  void Read() 
         {
 

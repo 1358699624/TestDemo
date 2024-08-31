@@ -9,9 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Aspose.Cells;
-using Google.Cloud.Translation.V2;
-using GoogleApi.Entities.Maps.Routes.Common.Enums;
-using GoogleApi.Entities.Translate.Translate.Response;
 
 
 
@@ -54,21 +51,29 @@ namespace WindowsFormsApp1
                     // 从 DataTable 获取当前单元格的值，并将其放入 Excel 单元格中  
                     cells[cellRef].PutValue(dtable.Rows[i][j].ToString());
 
+                    if (i!=0)
+                    {
+                        var contentStyle = cells[4 + i, j].GetStyle();
 
+
+                        worksheet.Cells[cellRef].SetStyle(contentStyle);
+
+                    }
                     // 假设我们想要加粗并居中第一行的文本  
-                    Style style = worksheet.Cells[i, j].GetStyle();
-                    style.Font.IsBold = true;
-                    style.HorizontalAlignment = TextAlignmentType.Center;
-                    style.Borders[BorderType.TopBorder].LineStyle = CellBorderType.Thin;
-                    style.Borders[BorderType.TopBorder].Color = Color.Black;
-                    style.Borders[BorderType.BottomBorder].LineStyle = CellBorderType.Thin;
-                    style.Borders[BorderType.BottomBorder].Color = Color.Black;
-                    style.Borders[BorderType.LeftBorder].LineStyle = CellBorderType.Thin;
-                    style.Borders[BorderType.LeftBorder].Color = Color.Black;
-                    style.Borders[BorderType.RightBorder].LineStyle = CellBorderType.Thin;
-                    style.Borders[BorderType.RightBorder].Color = Color.Black;
+
+                    //Style style = worksheet.Cells[i, j].GetStyle();
+                    //style.Font.IsBold = true;
+                    //style.HorizontalAlignment = TextAlignmentType.Center;
+                    //style.Borders[BorderType.TopBorder].LineStyle = CellBorderType.Thin;
+                    //style.Borders[BorderType.TopBorder].Color = Color.Black;
+                    //style.Borders[BorderType.BottomBorder].LineStyle = CellBorderType.Thin;
+                    //style.Borders[BorderType.BottomBorder].Color = Color.Black;
+                    //style.Borders[BorderType.LeftBorder].LineStyle = CellBorderType.Thin;
+                    //style.Borders[BorderType.LeftBorder].Color = Color.Black;
+                    //style.Borders[BorderType.RightBorder].LineStyle = CellBorderType.Thin;
+                    //style.Borders[BorderType.RightBorder].Color = Color.Black;
+
                     // 应用样式  
-                    worksheet.Cells[cellRef].SetStyle(style);
                 }
             }
 
